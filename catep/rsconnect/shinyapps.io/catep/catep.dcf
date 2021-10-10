@@ -1,0 +1,11 @@
+name: catep
+title:
+username:
+account: catep
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4785132
+bundleId: 5121247
+url: https://catep.shinyapps.io/catep/
+when: 1633773055.32119
+lastSyncTime: 1633773055.32119

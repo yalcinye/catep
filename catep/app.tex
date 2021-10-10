@@ -1,0 +1,528 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={app.R},
+  pdfauthor={GTUSR0313},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{app.R}
+\author{GTUSR0313}
+\date{2021-10-09}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{"mirtCAT"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: mirt
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: stats4
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: lattice
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: shiny
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{"shinythemes"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"RMariaDB"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"RMySQL"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: DBI
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{"DBI"}\NormalTok{)}
+\CommentTok{\#source("C:/Users/GTUSR0313/Desktop/New\_folder/catep/", encoding="UTF{-}8")}
+\CommentTok{\#set.seed(1234)}
+\NormalTok{nitems }\OtherTok{\textless{}{-}} \DecValTok{24} \CommentTok{\#Toplam madde sayisi}
+\NormalTok{ritems}\OtherTok{=}\DecValTok{15}    \CommentTok{\#Reading madde sayisi}
+\NormalTok{lnitems}\OtherTok{=}\DecValTok{2}   
+\NormalTok{litems}\OtherTok{=}\NormalTok{nitems}\SpecialCharTok{{-}}\NormalTok{ritems}\SpecialCharTok{{-}}\NormalTok{lnitems }\CommentTok{\# Puanlanan listening madde sayisi}
+\NormalTok{itemnames }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}Item.\textquotesingle{}}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\NormalTok{nitems)}
+\NormalTok{a }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FunctionTok{rlnorm}\NormalTok{(nitems}\SpecialCharTok{/}\DecValTok{2}\NormalTok{, }\FloatTok{0.2}\NormalTok{, }\FloatTok{0.3}\NormalTok{), }\FunctionTok{rnorm}\NormalTok{(nitems}\SpecialCharTok{/}\DecValTok{4}\NormalTok{, }\DecValTok{0}\NormalTok{, }\FloatTok{0.3}\NormalTok{), }\FunctionTok{numeric}\NormalTok{(nitems}\SpecialCharTok{/}\DecValTok{2}\NormalTok{),}
+              \FunctionTok{rnorm}\NormalTok{(nitems}\SpecialCharTok{/}\DecValTok{4}\NormalTok{, }\DecValTok{0}\NormalTok{, }\FloatTok{0.3}\NormalTok{), }\FunctionTok{rlnorm}\NormalTok{(nitems}\SpecialCharTok{/}\DecValTok{2}\NormalTok{, }\FloatTok{0.2}\NormalTok{, }\FloatTok{0.3}\NormalTok{)), nitems)}
+\NormalTok{a[}\DecValTok{1}\SpecialCharTok{:}\NormalTok{ritems,}\DecValTok{2}\NormalTok{]}\OtherTok{=}\DecValTok{0}
+\NormalTok{a[(nitems}\SpecialCharTok{{-}}\NormalTok{lnitems}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{:}\NormalTok{(nitems),}\DecValTok{2}\NormalTok{]}\OtherTok{=}\DecValTok{0}
+\NormalTok{a[(ritems}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{:}\NormalTok{(nitems),}\DecValTok{2}\NormalTok{]}\OtherTok{=}\DecValTok{0}
+\NormalTok{d }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(nitems)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{nitems) d[i]}\OtherTok{=}\SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{+}\NormalTok{(i}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{*}\NormalTok{.}\DecValTok{2}
+\NormalTok{pars }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(a, d)}
+\FunctionTok{colnames}\NormalTok{(pars) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"a1"}\NormalTok{, }\StringTok{"a2"}\NormalTok{, }\StringTok{"d"}\NormalTok{)}
+\NormalTok{trait\_cov }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+
+\NormalTok{mod }\OtherTok{\textless{}{-}} \FunctionTok{generate.mirt\_object}\NormalTok{(pars, }\AttributeTok{itemtype =} \StringTok{"2PL"}\NormalTok{, }\AttributeTok{latent\_covariance =}\NormalTok{ trait\_cov)}
+
+\FunctionTok{coef}\NormalTok{(mod, }\AttributeTok{simplify=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $items
+##             a1 a2    d g u
+## Item.1   1.340  0 -2.0 0 1
+## Item.2   1.005  0 -1.8 0 1
+## Item.3   0.662  0 -1.6 0 1
+## Item.4   2.108  0 -1.4 0 1
+## Item.5   1.053  0 -1.2 0 1
+## Item.6   0.807  0 -1.0 0 1
+## Item.7   0.831  0 -0.8 0 1
+## Item.8   1.172  0 -0.6 0 1
+## Item.9   1.618  0 -0.4 0 1
+## Item.10  0.726  0 -0.2 0 1
+## Item.11  0.678  0  0.0 0 1
+## Item.12  1.190  0  0.2 0 1
+## Item.13  0.279  0  0.4 0 1
+## Item.14 -0.473  0  0.6 0 1
+## Item.15 -0.111  0  0.8 0 1
+## Item.16 -0.099  0  1.0 0 1
+## Item.17  0.180  0  1.2 0 1
+## Item.18 -0.297  0  1.4 0 1
+## Item.19  0.000  0  1.6 0 1
+## Item.20  0.000  0  1.8 0 1
+## Item.21  0.000  0  2.0 0 1
+## Item.22  0.000  0  2.2 0 1
+## Item.23  0.000  0  2.4 0 1
+## Item.24  0.000  0  2.6 0 1
+## 
+## $means
+## F1 F2 
+##  0  0 
+## 
+## $cov
+##     F1  F2
+## F1 1.0 0.5
+## F2 0.5 1.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{questions }\OtherTok{\textless{}{-}}\NormalTok{ answers }\OtherTok{\textless{}{-}} \FunctionTok{character}\NormalTok{(nitems)}
+\NormalTok{choices }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\ConstantTok{NA}\NormalTok{, nitems, }\DecValTok{4}\NormalTok{)}
+\NormalTok{stems}\OtherTok{=}\FunctionTok{list}\NormalTok{(}\FunctionTok{div}\NormalTok{(}\FunctionTok{strong}\NormalTok{(}\StringTok{"Two items will be responded on this text"}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{HTML}\NormalTok{(}\StringTok{"Edinburgh is the capital city of Scotland. It is very historic and has many old buildings to visit. But perhaps it is most famous for its main street  Princes Street. Here can you find all types of shops and a lovely park to have a picnic in. So, what makes it different and special? Well in this street you can also find a castle. Edinburgh Castle is over 1000 years old and is still used by soldiers. It has a very famous gun called Mons Meg. At one oclock everyday you can hear this gun all over the city. The main railway station is also on the main street so many tourists come to visit Edinburgh by train and in a very short time they can visit the castle go shopping and have lunch. Edinburgh is my home city and I think it is a great place for people to visit."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }\FunctionTok{strong}\NormalTok{(}\StringTok{"The main street in Edinburgh is unusual because"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{HTML}\NormalTok{(}\StringTok{"Edinburgh is the capital city of Scotland. It is very historic and has many old buildings to visit. But perhaps it is most famous for its main street  Princes Street. Here can you find all types of shops and a lovely park to have a picnic in. So, what makes it different and special? Well in this street you can also find a castle. Edinburgh Castle is over 1000 years old and is still used by soldiers. It has a very famous gun called Mons Meg. At one oclock everyday you can hear this gun all over the city. The main railway station is also on the main street so many tourists come to visit Edinburgh by train and in a very short time they can visit the castle go shopping and have lunch. Edinburgh is my home city and I think it is a great place for people to visit."}\NormalTok{), }\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{strong}\NormalTok{ (}\StringTok{"What happens at one oclock every day?"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{HTML}\NormalTok{(}\StringTok{"When it comes to thinking of the jobs which robots could never be able to do, you would probably come up with doctors and teachers first. Maybe, you think that robots can take over the jobs of cleaners and factory workers, but there are some jobs that require human interaction. However, we need to ask ourselves this question: Are we underestimating what robots are capable of? In fact, it may sound interesting, but in some situations, they do better at diagnosing sicknesses. In addition to this information, some patients may even feel more comfortable when they have to share personal information with a machine rather than an"}\NormalTok{),}\FunctionTok{strong}\NormalTok{(}\StringTok{" actual"}\NormalTok{),}\FunctionTok{HTML}\NormalTok{(}\StringTok{" human being."}\NormalTok{), }\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }\FunctionTok{HTML}\NormalTok{(}\StringTok{"According to the passage, actual has the closest meaning to"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{HTML}\NormalTok{(}\StringTok{"Fairies take a great deal of place in todays childrens stories, magical creatures with wings. Almost everyone knows that they are pretty and they are considered to be friendly to people. Also, they do small magic to impress humans. Shakespeare is thought to be the pioneer when it comes to fairies and we can see many modern ideas about fairies thanks to him in the 18th and 19th centuries. Even though the origins of fairies go back to the Ancient Greeks, similar creatures can be seen in many other cultures, as well. There are some who believe that fairies were the gods of the previous, pagan religions which worshipped the nature. Later on, as they lost their significance and became less strong figures in the stories, the Greek and Roman Gods took over."}\NormalTok{), }\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }\FunctionTok{strong}\NormalTok{(}\StringTok{"According to the passage, it is clear that"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{HTML}\NormalTok{(}\StringTok{"An influencer is a person who can have an effect on the decisions of other people who follow them because of their role in a specific area such as technology, fashion, or travel. Influencers generally have a vast number of followers who pay a great deal of attention to what they think when it comes to buying things. They have the ability to convince other people to buy things and thats why many companies consider influencers as an easy and direct way to reach potential customers. There are a lot of brands which are asking famous influencers to promote their products and make people buy what they are trying to sell. As influencers make a lot of money even when it comes to a single post on a social media website, it is no wonder to think that many people would like to be influencers, as well."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{strong}\NormalTok{(}\StringTok{"What is the best title for the text?"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{HTML}\NormalTok{(}\StringTok{"Do you use any of the social networking websites which are so popular these days, the places where you can connect up with friends and relatives and meet people who share the same interests as you? If youre younger you may use MySpace, young adults are more likely to be found on Facebook and busy professionals may prefer something like LinkedIn. But at least two of these sites have one thing in common: apart from being social spaces where you can meet and chat to people, share photos and other things, they have all added new verbs and nouns to our lives in the past couple of years. Some examples are that you can facebook your holiday photos (upload them to your Facebook page), facebook someone to see who they are (look him up in Facebook), facebook someone about a party (contact someone through their Facebook page) and ask permission to facebook someone (add them as a Facebook friend)."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{strong}\NormalTok{(}\StringTok{"The text mainly discusses how\_\_\_."}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{strong}\NormalTok{(}\StringTok{"Three items will be responded on this text"}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{HTML}\NormalTok{(}\StringTok{"According to a United Nations FAO report published in 2011, almost half of the fruit and vegetables produced in the world go to waste, which occurs during production, transformation, transport, and even  notably in developed economies  after being bought by the final customer. In an ideal world, and as in the past, much of the food consumed in cities would be produced locally, not shipped thousands of miles as happens today. This wastage has a huge impact in terms of natural resources, particularly space and water, which in turn have huge implications for the global environment. In order to find a solution to this serious problem, Chicago\textquotesingle{}s O\textquotesingle{}Hare airport has been turned into a home to an aeroponic garden, where people can see how vegetables can be grown in an environment that is not only without soil but even without any permanent medium in which to grow."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"In this experimental garden, plants are grown, as the name suggests, in the air, their roots hanging down in nothing. Not just air, obviously; these roots are regularly sprayed with a nutrient{-}rich solution that gives them just what they need for optimum growth and the only water used is what is actually taken up by the roots of plants when they are sprayed. Any water not used can be collected and reused. Therefore aeroponics reduces water waste to zero. The same goes for nutrients as chemical fertilizer are not needed any further. Reduced use of natural resources will be vital for ensuring a"}\NormalTok{),}\FunctionTok{strong}\NormalTok{(}\StringTok{" sustainable "}\NormalTok{), }\FunctionTok{HTML}\NormalTok{(}\StringTok{"future for generations to come, even when the global population goes above 10 billion. If our world is to survive for much longer, we have no choice but to reduce the use of natural resources and cut out wastage.  Compared to traditional agriculture, aeroponics does both."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{strong}\NormalTok{(}\StringTok{"The word \textquotesingle{}sustainable\textquotesingle{} in paragraph 2 is closest in meaning to \_."}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{HTML}\NormalTok{(}\StringTok{"According to a United Nations FAO report published in 2011, almost half of the fruit and vegetables produced in the world go to waste, which occurs during production, transformation, transport, and even  notably in developed economies  after being bought by the final customer. In an ideal world, and as in the past, much of the food consumed in cities would be produced locally, not shipped thousands of miles as happens today. This wastage has a huge impact in terms of natural resources, particularly space and water, which in turn have huge implications for the global environment. In order to find a solution to this serious problem, Chicago\textquotesingle{}s O\textquotesingle{}Hare airport has been turned into a home to an aeroponic garden, where people can see how vegetables can be grown in an environment that is not only without soil but even without any permanent medium in which to grow."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"In this experimental garden, plants are grown, as the name suggests, in the air, their roots hanging down in nothing. Not just air, obviously; these roots are regularly sprayed with a nutrient{-}rich solution that gives them just what they need for optimum growth and the only water used is what is actually taken up by the roots of plants when they are sprayed. Any water not used can be collected and reused. Therefore aeroponics reduces water waste to zero. The same goes for nutrients as chemical fertilizer are not needed any further. Reduced use of natural resources will be vital for ensuring a sustainable future for generations to come, even when the global population goes above 10 billion. If our world is to survive for much longer, we have no choice but to reduce the use of natural resources and cut out wastage.  Compared to traditional agriculture, aeroponics does both."}\NormalTok{), }\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{strong}\NormalTok{(}\StringTok{"Which of the following is an opinion based on the text?"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{HTML}\NormalTok{(}\StringTok{"According to a United Nations FAO report published in 2011, almost half of the fruit and vegetables produced in the world go to waste, which occurs during production, transformation, transport, and even  notably in developed economies  after being bought by the final customer. In an ideal world, and as in the past, much of the food consumed in cities would be produced locally, not shipped thousands of miles as happens today. This wastage has a huge impact in terms of natural resources, particularly space and water, which in turn have huge implications for the global environment. In order to find a solution to this serious problem, Chicago\textquotesingle{}s O\textquotesingle{}Hare airport has been turned into a home to an aeroponic garden, where people can see how vegetables can be grown in an environment that is not only without soil but even without any permanent medium in which to grow."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"In this experimental garden, plants are grown, as the name suggests, in the air, their roots hanging down in nothing. Not just air, obviously; these roots are regularly sprayed with a nutrient{-}rich solution that gives them just what they need for optimum growth and the only water used is what is actually taken up by the roots of plants when they are sprayed. Any water not used can be collected and reused. Therefore aeroponics reduces water waste to zero. The same goes for nutrients as chemical fertilizer are not needed any further. Reduced use of natural resources will be vital for ensuring a sustainable future for generations to come, even when the global population goes above 10 billion. If our world is to survive for much longer, we have no choice but to reduce the use of natural resources and cut out wastage.  Compared to traditional agriculture, aeroponics does both."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{strong}\NormalTok{(}\StringTok{"The authors attitude towards aeroponics can best be described as "}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{strong}\NormalTok{(}\StringTok{"Three items will be responded on this text"}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{HTML}\NormalTok{(}\StringTok{"The first image many people have of early education is a circle of small children, sitting cross{-}legged, paying attention (or sometimes not) to a teacher reading a book aloud and showing pictures to the class. And early education teachers across the world repeated this practice daily, that is, until a few months ago. As schools, teachers and families face the need for shifting to online teaching, one  specific question has arisen over how to perform these read alouds on Zoom, and Youtube, two of the platforms where many young students continue to learn. As this rapid shift to online education has become widespread, another important question has come further under the spotlight: Is reading a book to students online an infringement of copyright law?"}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"To answer this question, Its important to understand why youre reading aloud to know if you can rely on fair use. Most suggest that developing a love of books in the early years is essential to support a lifelong joy of reading, as well as contributing to later success at school. For this reason, more and more early education teachers want to reach their students after hours by recording themselves reading books and posting them online for pupils to watch from home. However, technology presents a challenge when it comes to understanding and interpreting what is fair use of copyright law, currently a concern for many teachers. That is, they are unsure about whether its legal to read books to students or post them online. This situation highlights the uncertainties some have about how copyright law applies to common educational practices when teaching shifts quickly from classrooms to an online environment."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"The short answer seems story time is generally covered by fair use of the law. Although many well{-}intentioned practitioners have warned teachers against this practice, the fact is that copyright law permits many read{-}aloud activities online. As teachers and learners are still adapting to new educational environments, copyright concerns about reading aloud should not be among the challenges they face."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{strong}\NormalTok{(}\StringTok{"The writer mentions the online platforms to "}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{HTML}\NormalTok{(}\StringTok{"The first image many people have of early education is a circle of small children, sitting cross{-}legged, paying attention (or sometimes not) to a teacher reading a book aloud and showing pictures to the class. And early education teachers across the world repeated this practice daily, that is, until a few months ago. As schools, teachers and families face the need for shifting to online teaching, one  specific question has arisen over how to perform these read alouds on Zoom, and Youtube, two of the platforms where many young students continue to learn. As this rapid shift to online education has become widespread, another important question has come further under the spotlight: Is reading a book to students online an infringement of copyright law?"}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"To answer this question, Its important to understand why youre reading aloud to know if you can rely on fair use. Most suggest that developing a love of books in the early years is essential to support a lifelong joy of reading, as well as contributing to later success at school. For this reason, more and more early education teachers want to reach their students after hours by recording themselves reading books and posting them online for pupils to watch from home. However, technology presents a challenge when it comes to understanding and interpreting what is fair use of copyright law, currently a concern for many teachers. That is, they are unsure about whether its legal to read books to students or post them online. This situation highlights the uncertainties some have about how copyright law applies to common educational practices when teaching shifts quickly from classrooms to an online environment."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"The short answer seems story time is generally covered by fair use of the law. Although many well{-}intentioned practitioners have warned teachers against this practice, the fact is that copyright law permits many read{-}aloud activities online. As teachers and learners are still adapting to new educational environments, copyright concerns about reading aloud should not be among the challenges they face."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{strong}\NormalTok{(}\StringTok{"The second paragraph is mainly concerned with"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{HTML}\NormalTok{(}\StringTok{"The first image many people have of early education is a circle of small children, sitting cross{-}legged, paying attention (or sometimes not) to a teacher reading a book aloud and showing pictures to the class. And early education teachers across the world repeated this practice daily, that is, until a few months ago. As schools, teachers and families face the need for shifting to online teaching, one  specific question has arisen over how to perform these read alouds on Zoom, and Youtube, two of the platforms where many young students continue to learn. As this rapid shift to online education has become widespread, another important question has come further under the spotlight: Is reading a book to students online an infringement of copyright law?"}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"To answer this question, Its important to understand why you are reading aloud to know if you can rely on fair use. Most suggest that developing a love of books in the early years is essential to support a lifelong joy of reading, as well as contributing to later success at school. For this reason, more and more early education teachers want to reach their students after hours by recording themselves reading books and posting them online for pupils to watch from home. However, technology presents a challenge when it comes to understanding and interpreting what is fair use of copyright law, currently a concern for many teachers. That is, they are unsure about whether its legal to read books to students or post them online. This situation highlights the uncertainties some have about how copyright law applies to common educational practices when teaching shifts quickly from classrooms to an online environment."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"The short answer seems story time is generally covered by fair use of the law. Although many well{-}intentioned practitioners have warned teachers against this practice, the fact is that copyright law permits many read{-}aloud activities online. As teachers and learners are still adapting to new educational environments, copyright concerns about reading aloud should not be among the challenges they face."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{strong}\NormalTok{(}\StringTok{"In the last paragraph, the authors attitude toward using digital storytelling is"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{strong}\NormalTok{(}\StringTok{"Three items will be responded on this text"}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{HTML}\NormalTok{(}\StringTok{"Shooting for the stars has become an international competition. When we think about space exploration, the first thing that usually comes to mind is NASA, the American Space Agency. Perhaps ESA comes to mind  the European Space Agency. Some may even think of the Chinese Space Agency or the Russian Space Agency. Afterall, these are the most notable countries when it comes to space exploration. However, they are not the only countries who have their sights set on the stars. In recent years, many countries have entered the ring and are now fighting for a place in space. One such country is Turkey."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"Headquartered in Ankara, Turkey, the TUA, or Turkish Space Agency, was founded on December 13, 2018. Its stated, official, mission is to reduce dependence on foreign aerospace science and technology. Their mission also is to increase competitiveness in the international arena and to create a scientific and technological infrastructure while expanding research and development with an aim to develop new technologies. Some of the things they are working on to meet their goals include projects to develop new systems, facilities, tools and equipment related to space and aviation, including satellites, launch vehicles and systems, air vehicles, simulators, and space platforms."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"One of the biggest projects the agency is currently working on is a trip to the moon. On February 9th, 2021, President Recep Tayyip Erdogan announced Turkeys National Space Program to the country and the rest of the world and proclaimed that Turkey would reach the moon with an unmanned vehicle in 2023, only 2 short years away. The goal is to reach the moon using only Turkish technology and components. One such component is the original hybrid rocket engine developed by DeltaV Uzay Teknolojileri A.S. The rocket, known as SORS, or Hybrid Probe Rocket in English, has passed its first stage of development by successfully igniting during a test in March in the city of Sile, the home of the ignition testing facility. On hand for the event was Prime Minister Varank, who gave the command to start the countdown to ignition. The rocket remained ignited for the full targeted time limit of 50 seconds and was regarded as a complete success. This time limit is"}\NormalTok{),}\FunctionTok{strong}\NormalTok{(}\StringTok{" substantial "}\NormalTok{),}\FunctionTok{HTML}\NormalTok{(}\StringTok{"because it is the amount of time a rocket needs to remain ignited in order to break through Earths atmosphere and reach the inner limits of space."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"In addition to the Moon Mission, President Erdogan announced plans that map out the next 10 years of the space program. While reaching the moon is a notable goal, the most significant component of the space program is Turkeys desire to make a profit off its endeavors. The country fully intends on commercializing its capabilities and technological applications. To meet these lofty goals, the plan also includes education and training as well as recruiting young people. The plan is for the space program to be a sustainable investment in the future of the country. For Turkeys Space program, the future is certainly looking stellar."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{strong}\NormalTok{(}\StringTok{"According to the first paragraph, how many institutions lead the world in space exploration?"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{HTML}\NormalTok{(}\StringTok{"Shooting for the stars has become an international competition. When we think about space exploration, the first thing that usually comes to mind is NASA, the American Space Agency. Perhaps ESA comes to mind  the European Space Agency. Some may even think of the Chinese Space Agency or the Russian Space Agency. Afterall, these are the most notable countries when it comes to space exploration. However, they are not the only countries who have their sights set on the stars. In recent years, many countries have entered the ring and are now fighting for a place in space. One such country is Turkey."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"Headquartered in Ankara, Turkey, the TUA, or Turkish Space Agency, was founded on December 13, 2018. Its stated, official, mission is to reduce dependence on foreign aerospace science and technology. Their mission also is to increase competitiveness in the international arena and to create a scientific and technological infrastructure while expanding research and development with an aim to develop new technologies. Some of the things they are working on to meet their goals include projects to develop new systems, facilities, tools and equipment related to space and aviation, including satellites, launch vehicles and systems, air vehicles, simulators, and space platforms."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"One of the biggest projects the agency is currently working on is a trip to the moon. On February 9th, 2021, President Recep Tayyip Erdogan announced Turkeys National Space Program to the country and the rest of the world and proclaimed that Turkey would reach the moon with an unmanned vehicle in 2023, only 2 short years away. The goal is to reach the moon using only Turkish technology and components. One such component is the original hybrid rocket engine developed by DeltaV Uzay Teknolojileri A.S. The rocket, known as SORS, or Hybrid Probe Rocket in English, has passed its first stage of development by successfully igniting during a test in March in the city of Sile, the home of the ignition testing facility. On hand for the event was Prime Minister Varank, who gave the command to start the countdown to ignition. The rocket remained ignited for the full targeted time limit of 50 seconds and was regarded as a complete success. This time limit is"}\NormalTok{),}\FunctionTok{strong}\NormalTok{(}\StringTok{" substantial "}\NormalTok{),}\FunctionTok{HTML}\NormalTok{(}\StringTok{"because it is the amount of time a rocket needs to remain ignited in order to break through Earths atmosphere and reach the inner limits of space."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{strong}\NormalTok{(}\StringTok{"What is the main idea of this text?"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{HTML}\NormalTok{(}\StringTok{"Shooting for the stars has become an international competition. When we think about space exploration, the first thing that usually comes to mind is NASA, the American Space Agency. Perhaps ESA comes to mind  the European Space Agency. Some may even think of the Chinese Space Agency or the Russian Space Agency. Afterall, these are the most notable countries when it comes to space exploration. However, they are not the only countries who have their sights set on the stars. In recent years, many countries have entered the ring and are now fighting for a place in space. One such country is Turkey."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(), }
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"Headquartered in Ankara, Turkey, the TUA, or Turkish Space Agency, was founded on December 13, 2018. Its stated, official, mission is to reduce dependence on foreign aerospace science and technology. Their mission also is to increase competitiveness in the international arena and to create a scientific and technological infrastructure while expanding research and development with an aim to develop new technologies. Some of the things they are working on to meet their goals include projects to develop new systems, facilities, tools and equipment related to space and aviation, including satellites, launch vehicles and systems, air vehicles, simulators, and space platforms."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{HTML}\NormalTok{(}\StringTok{"One of the biggest projects the agency is currently working on is a trip to the moon. On February 9th, 2021, President Recep Tayyip Erdogan announced Turkey\textquotesingle{}s National Space Program to the country and the rest of the world and proclaimed that Turkey would reach the moon with an unmanned vehicle in 2023, only 2 short years away. The goal is to reach the moon using only Turkish technology and components. One such component is the original hybrid rocket engine developed by DeltaV Uzay Teknolojileri A.S. The rocket, known as SORS, or Hybrid Probe Rocket in English, has passed its first stage of development by successfully igniting during a test in March in the city of Sile, the home of the ignition testing facility. On hand for the event was Prime Minister Varank, who gave the command to start the countdown to ignition. The rocket remained ignited for the full targeted time limit of 50 seconds and was regarded as a complete success. This time limit is"}\NormalTok{),}\FunctionTok{strong}\NormalTok{(}\StringTok{" substantial "}\NormalTok{),}\FunctionTok{HTML}\NormalTok{(}\StringTok{"because it is the amount of time a rocket needs to remain ignited in order to break through Earths atmosphere and reach the inner limits of space."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{strong}\NormalTok{(}\StringTok{"In the third paragraph, the word substantial is closest in meaning to"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{strong}\NormalTok{(}\StringTok{"Whats Gary mainly talking about?"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{strong}\NormalTok{(}\StringTok{"What inspired Gary to work on his area of study?"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{strong}\NormalTok{(}\StringTok{"Regarding the future of transportation Gary predicts that \_\_\_\_\_\_."}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{strong}\NormalTok{(}\StringTok{"The findings of a 2015 study reveals that....."}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{strong}\NormalTok{(}\StringTok{"The part of the talk regarding gratitude journaling mainly argues that ..."}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{strong}\NormalTok{(}\StringTok{"The main purpose of the talk is to {-}{-}{-}{-}{-}."}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{strong}\NormalTok{(}\StringTok{\textquotesingle{}Please listen carefully the audio, you can not listen it again\textquotesingle{}}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{\textquotesingle{}Length=1 mins\textquotesingle{}}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{strong}\NormalTok{(}\StringTok{"How many rabbits does Fiona have?"}\NormalTok{), tags}\SpecialCharTok{$}\FunctionTok{audio}\NormalTok{(}\AttributeTok{src =} \StringTok{"www/1007{-}1008{-}1009.m4a"}\NormalTok{,}\AttributeTok{autoplay=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{type =} \StringTok{"audio/mp3"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{strong}\NormalTok{(}\StringTok{\textquotesingle{}Following three items will be responded on this audio.\textquotesingle{}}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{\textquotesingle{}Please listen carefully, you can not listen it again\textquotesingle{}}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{\textquotesingle{}Length=3 mins\textquotesingle{}}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{strong}\NormalTok{(}\StringTok{"Whats Gary mainly talking about?"}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\StringTok{"The science behind futurology as a profession"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"Differences between futurology and history"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"Environmental issues he observed in his hometown"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"His experience as a college student in Houston"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{strong}\NormalTok{(}\StringTok{"What inspired Gary to work on his area of study?"}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\StringTok{"people will have more cars in New York"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"cities will use Houston as a model for transportation"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"alterations in transportation will take place gradually"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"new laws will restrict the way people use public transport"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{strong}\NormalTok{(}\StringTok{"Regarding the future of transportation Gary predicts that \_\_\_\_\_\_."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\StringTok{"higher levels of gratitude correlate with a stronger sense of fairness"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"people feel more grateful to strangers than acquaintances"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"gifts of food and clothing generates a deeper sense of gratitude"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"gratitude means much more than just a moral emotion"}\NormalTok{, }\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+\NormalTok{               tags}\SpecialCharTok{$}\FunctionTok{audio}\NormalTok{(}\AttributeTok{src =} \StringTok{"www/1001{-}1002{-}1003.mpeg"}\NormalTok{,}\AttributeTok{autoplay=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{type =} \StringTok{"audio/mp3"}\NormalTok{)),}
+           \FunctionTok{div}\NormalTok{(}\FunctionTok{strong}\NormalTok{(}\StringTok{\textquotesingle{}Following three items will be responded on this audio.\textquotesingle{}}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{\textquotesingle{}Please listen carefully, you can not listen it again\textquotesingle{}}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{\textquotesingle{}Length=2 mins\textquotesingle{}}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{strong}\NormalTok{(}\StringTok{"The findings of a 2015 study reveals that....."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\StringTok{"higher levels of gratitude correlate with a stronger sense of fairness"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"people feel more grateful to strangers than acquaintances"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"gifts of food and clothing generates a deeper sense of gratitude "}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"noting blessings is a key part of preventive treatment for heart failure "}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{strong}\NormalTok{(}\StringTok{"The part of the talk regarding gratitude journaling mainly argues that ..."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\StringTok{"writing down happiness scores significantly increases levels of oxytocin "}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"keeping a gratitude journal boosts emotional and physical well{-}being"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"counting your blessings promotes closer social ties within the community"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"noting blessings is a key part of preventive treatment for heart failure "}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}
+               \FunctionTok{strong}\NormalTok{(}\StringTok{"The main purpose of the talk is to {-}{-}{-}{-}{-}."}\NormalTok{),}\FunctionTok{br}\NormalTok{(),}\StringTok{"provide a broader definition of gratitude"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"categorize gratitude as a basic emotion"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"illustrate the effects of feeling grateful"}\NormalTok{,}\FunctionTok{br}\NormalTok{(),}\StringTok{"compare findings of research on gratitude"}\NormalTok{,}
+\NormalTok{               tags}\SpecialCharTok{$}\FunctionTok{audio}\NormalTok{(}\AttributeTok{src =} \StringTok{"www/1004{-}1005{-}1006.mp3"}\NormalTok{,}\AttributeTok{autoplay=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{type =} \StringTok{"audio/mp3"}\NormalTok{)))}
+
+\NormalTok{questions }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(stems, as.character)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Question=}\NormalTok{questions, }\AttributeTok{Option=}\NormalTok{choices, }\AttributeTok{Type =} \StringTok{\textquotesingle{}radio\textquotesingle{}}\NormalTok{, }\AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{1}\NormalTok{]}\OtherTok{=}\StringTok{"it has many different shops."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{1}\NormalTok{]}\OtherTok{=}\StringTok{"it is near the main train station. "}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{1}\NormalTok{]}\OtherTok{=}\StringTok{"there is a castle in the street."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{1}\NormalTok{]}\OtherTok{=}\StringTok{"there is a place to eat outside."}
+\NormalTok{answers[}\DecValTok{1}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{1}\NormalTok{]}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{2}\NormalTok{]}\OtherTok{=}\StringTok{"Edinburgh Castle opens for tourists"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{2}\NormalTok{]}\OtherTok{=}\StringTok{"The first train arrives at the station. "}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{2}\NormalTok{]}\OtherTok{=}\StringTok{"The soldiers at the castle start work."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{2}\NormalTok{]}\OtherTok{=}\StringTok{"They fire the gun at Edinburgh castle."}
+\NormalTok{answers[}\DecValTok{2}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{2}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{3}\NormalTok{]}\OtherTok{=}\StringTok{"ideal"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{3}\NormalTok{]}\OtherTok{=}\StringTok{"potential"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{3}\NormalTok{]}\OtherTok{=}\StringTok{"possible"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{3}\NormalTok{]}\OtherTok{=}\StringTok{"real"}
+\NormalTok{answers[}\DecValTok{3}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{3}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{4}\NormalTok{]}\OtherTok{=}\StringTok{"fairies are the only creatures in kids stories"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{4}\NormalTok{]}\OtherTok{=}\StringTok{"Shakespeare has a lot of effects on modern ideas about fairies."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{4}\NormalTok{]}\OtherTok{=}\StringTok{"today we can still see the importance of fairies in many cultures."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{4}\NormalTok{]}\OtherTok{=}\StringTok{"we can only see the origins of fairies during 18th and 19th centuries."}
+\NormalTok{answers[}\DecValTok{4}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{4}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{5}\NormalTok{]}\OtherTok{=}\StringTok{"How to Become an Influencer"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{5}\NormalTok{]}\OtherTok{=}\StringTok{"How Influencers Make Money "}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{5}\NormalTok{]}\OtherTok{=}\StringTok{"The Impact of Influencers on People"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{5}\NormalTok{]}\OtherTok{=}\StringTok{"Why Companies Need Influencers"}
+\NormalTok{answers[}\DecValTok{5}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{5}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{6}\NormalTok{]}\OtherTok{=}\StringTok{"Facebook affects our relationships"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{6}\NormalTok{]}\OtherTok{=}\StringTok{"social media connects people worldwide"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{6}\NormalTok{]}\OtherTok{=}\StringTok{"social networking sites influence language"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{6}\NormalTok{]}\OtherTok{=}\StringTok{"networking sites prevents communication"}
+\NormalTok{answers[}\DecValTok{6}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{6}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{7}\NormalTok{]}\OtherTok{=}\StringTok{"renewable"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{7}\NormalTok{]}\OtherTok{=}\StringTok{"affordable"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{7}\NormalTok{]}\OtherTok{=}\StringTok{"excusable"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{7}\NormalTok{]}\OtherTok{=}\StringTok{"illegible"}
+\NormalTok{answers[}\DecValTok{7}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{7}\NormalTok{]}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{8}\NormalTok{]}\OtherTok{=}\StringTok{"Growing most of the food locally, not importing, is desirable."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{8}\NormalTok{]}\OtherTok{=}\StringTok{"Aeroponics proves how crops require soil to be produced."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{8}\NormalTok{]}\OtherTok{=}\StringTok{"Food waste in developed countries happens before purchase."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{8}\NormalTok{]}\OtherTok{=}\StringTok{"Consuming more and more resources leads to a better world."}
+\NormalTok{answers[}\DecValTok{8}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{8}\NormalTok{]}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{9}\NormalTok{]}\OtherTok{=}\StringTok{"cautionary"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{9}\NormalTok{]}\OtherTok{=}\StringTok{"accusatory"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{9}\NormalTok{]}\OtherTok{=}\StringTok{"outraged"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{9}\NormalTok{]}\OtherTok{=}\StringTok{"concerned"}
+\NormalTok{answers[}\DecValTok{9}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{9}\NormalTok{]}
+
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{10}\NormalTok{]}\OtherTok{=}\StringTok{"raise awareness of how read alouds contributes to early education."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{10}\NormalTok{]}\OtherTok{=}\StringTok{"describe what read alouds include in early education."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{10}\NormalTok{]}\OtherTok{=}\StringTok{"give a reason why read alouds are common early education."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{10}\NormalTok{]}\OtherTok{=}\StringTok{"bring attention to how read alouds can be adapted."}
+\NormalTok{answers[}\DecValTok{10}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{10}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{11}\NormalTok{]}\OtherTok{=}\StringTok{"benefits of storytelling."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{11}\NormalTok{]}\OtherTok{=}\StringTok{"early years of book love."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{11}\NormalTok{]}\OtherTok{=}\StringTok{"difficulties with digital storytelling."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{11}\NormalTok{]}\OtherTok{=}\StringTok{"shifts in copyright laws."}
+\NormalTok{answers[}\DecValTok{11}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{11}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{12}\NormalTok{]}\OtherTok{=}\StringTok{"enthusiastic."}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{12}\NormalTok{]}\OtherTok{=}\StringTok{"changing"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{12}\NormalTok{]}\OtherTok{=}\StringTok{"neutral"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{12}\NormalTok{]}\OtherTok{=}\StringTok{"practical"}
+\NormalTok{answers[}\DecValTok{12}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{12}\NormalTok{]}
+
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{13}\NormalTok{]}\OtherTok{=}\StringTok{"one"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{13}\NormalTok{]}\OtherTok{=}\StringTok{"four"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{13}\NormalTok{]}\OtherTok{=}\StringTok{"five"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{13}\NormalTok{]}\OtherTok{=}\StringTok{"seven"}
+\NormalTok{answers[}\DecValTok{13}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{13}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{14}\NormalTok{]}\OtherTok{=}\StringTok{"The founding of the Turkish Space Agency"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{14}\NormalTok{]}\OtherTok{=}\StringTok{"The competitiveness of the Turkish Space Agency"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{14}\NormalTok{]}\OtherTok{=}\StringTok{"The purpose of the Turkish Space Agency"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{14}\NormalTok{]}\OtherTok{=}\StringTok{"The launching of a Turkish Space Agency rocket"}
+\NormalTok{answers[}\DecValTok{14}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{14}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{15}\NormalTok{]}\OtherTok{=}\StringTok{"important"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{15}\NormalTok{]}\OtherTok{=}\StringTok{"original"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{15}\NormalTok{]}\OtherTok{=}\StringTok{"excessive"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{15}\NormalTok{]}\OtherTok{=}\StringTok{"understanding"}
+\NormalTok{answers[}\DecValTok{15}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{15}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{16}\NormalTok{]}\OtherTok{=}\StringTok{"His job and its scientific differences from another job"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{16}\NormalTok{]}\OtherTok{=}\StringTok{"Areas most people work on in his profession around the world"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{16}\NormalTok{]}\OtherTok{=}\StringTok{"The unique characteristics of his job and his own area of interest"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{16}\NormalTok{]}\OtherTok{=}\StringTok{"Garys reasons for choosing his profession and his future plans "}
+\NormalTok{answers[}\DecValTok{16}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{16}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{17}\NormalTok{]}\OtherTok{=}\StringTok{"The science behind futurology as a profession"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{17}\NormalTok{]}\OtherTok{=}\StringTok{"Differences between futurology and history"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{17}\NormalTok{]}\OtherTok{=}\StringTok{"Environmental issues he observed in his hometown"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{17}\NormalTok{]}\OtherTok{=}\StringTok{"His experience as a college student in Houston  "}
+\NormalTok{answers[}\DecValTok{17}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{17}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{18}\NormalTok{]}\OtherTok{=}\StringTok{"people will have more cars in New York"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{18}\NormalTok{]}\OtherTok{=}\StringTok{"cities will use Houston as a model for transportation"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{18}\NormalTok{]}\OtherTok{=}\StringTok{"alterations in transportation will take place gradually"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{18}\NormalTok{]}\OtherTok{=}\StringTok{"new laws will restrict the way people use public transport"}
+\NormalTok{answers[}\DecValTok{18}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{18}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{19}\NormalTok{]}\OtherTok{=}\StringTok{"higher levels of gratitude correlate with a stronger sense of fairness"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{19}\NormalTok{]}\OtherTok{=}\StringTok{"people feel more grateful to strangers than acquaintances"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{19}\NormalTok{]}\OtherTok{=}\StringTok{"gifts of food and clothing generates a deeper sense of gratitude "}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{19}\NormalTok{]}\OtherTok{=}\StringTok{"gratitude means much more than just a moral emotion "}
+\NormalTok{answers[}\DecValTok{19}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{19}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{20}\NormalTok{]}\OtherTok{=}\StringTok{"writing down happiness scores significantly increases levels of oxytocin "}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{20}\NormalTok{]}\OtherTok{=}\StringTok{"keeping a gratitude journal boosts emotional and physical well{-}being"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{20}\NormalTok{]}\OtherTok{=}\StringTok{"counting your blessings promotes closer social ties within the community"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{20}\NormalTok{]}\OtherTok{=}\StringTok{"noting blessings is a key part of preventive treatment for heart failure "}
+\NormalTok{answers[}\DecValTok{20}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{20}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{21}\NormalTok{]}\OtherTok{=}\StringTok{"provide a broader definition of gratitude"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{21}\NormalTok{]}\OtherTok{=}\StringTok{"categorize gratitude as a basic emotion"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{21}\NormalTok{]}\OtherTok{=}\StringTok{"illustrate the effects of feeling grateful"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{21}\NormalTok{]}\OtherTok{=}\StringTok{"compare findings of research on gratitude"}
+\NormalTok{answers[}\DecValTok{21}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{21}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.1}\NormalTok{[}\DecValTok{22}\NormalTok{]}\OtherTok{=}\StringTok{"1"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.2}\NormalTok{[}\DecValTok{22}\NormalTok{]}\OtherTok{=}\StringTok{"2"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{22}\NormalTok{]}\OtherTok{=}\StringTok{"3"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.4}\NormalTok{[}\DecValTok{22}\NormalTok{]}\OtherTok{=}\StringTok{"6"}
+\NormalTok{answers[}\DecValTok{22}\NormalTok{]}\OtherTok{=}\NormalTok{df}\SpecialCharTok{$}\NormalTok{Option}\FloatTok{.3}\NormalTok{[}\DecValTok{22}\NormalTok{]}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Type[}\DecValTok{24}\NormalTok{]}\OtherTok{=}\StringTok{"none"}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Type[}\DecValTok{23}\NormalTok{]}\OtherTok{=}\StringTok{"none"}
+\NormalTok{storiesDb }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(}\FunctionTok{MariaDB}\NormalTok{(), }\AttributeTok{user=}\StringTok{\textquotesingle{}catepne1\_yalcinyelpaze\textquotesingle{}}\NormalTok{, }\AttributeTok{password=}\StringTok{\textquotesingle{}ketep.638\textquotesingle{}}\NormalTok{, }\AttributeTok{dbname=}\StringTok{\textquotesingle{}catepne1\_CATEP\textquotesingle{}}\NormalTok{, }\AttributeTok{host=}\StringTok{\textquotesingle{}89.252.138.67\textquotesingle{}}\NormalTok{,}\AttributeTok{port=}\StringTok{\textquotesingle{}3306\textquotesingle{}}\NormalTok{)}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Answer }\OtherTok{\textless{}{-}}\NormalTok{ answers}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Question }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Question, as.character)}
+\NormalTok{shiney}\OtherTok{=}\FunctionTok{list}\NormalTok{(}\AttributeTok{title=}\StringTok{\textquotesingle{}CATEP\textquotesingle{}}\NormalTok{,}\AttributeTok{authors=}\StringTok{"Catep Project Team"}\NormalTok{,}\AttributeTok{itemtimer=}\StringTok{"Item Time:"}\NormalTok{,}\AttributeTok{timemsg=}\FunctionTok{c}\NormalTok{(}\StringTok{"saat"}\NormalTok{,}\StringTok{"dakika"}\NormalTok{,}\StringTok{"saniye"}\NormalTok{,}\StringTok{"ve"}\NormalTok{),}
+            \AttributeTok{firstpage=}\FunctionTok{list}\NormalTok{(}\FunctionTok{h1}\NormalTok{(}\StringTok{\textquotesingle{}Welcome to the CATEP English Proficiency Testing\textquotesingle{}}\NormalTok{),}\FunctionTok{sprintf}\NormalTok{(}\StringTok{\textquotesingle{}The following interface was created by CATEP Project Team\textquotesingle{}}\NormalTok{)),}
+            \AttributeTok{instructions=}\FunctionTok{c}\NormalTok{(}\StringTok{"To answer next items please click on the action button below."}\NormalTok{,}\StringTok{"Next"}\NormalTok{),}
+            \AttributeTok{begin\_message=}\StringTok{"You are seem to ready answer the items"}\NormalTok{,}
+            \AttributeTok{demographics=} \FunctionTok{list}\NormalTok{(}\FunctionTok{selectInput}\NormalTok{(}\AttributeTok{inputId =} \StringTok{\textquotesingle{}University\textquotesingle{}}\NormalTok{,}
+                                           \AttributeTok{label =} \StringTok{\textquotesingle{}Please select your universtiy\textquotesingle{}}\NormalTok{,}
+                                           \AttributeTok{choices =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Gaziantep\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Kahramanmaras Sutcu imam\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Bilkent\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}other\textquotesingle{}}\NormalTok{),}
+                                           \AttributeTok{selected =} \ConstantTok{NULL}\NormalTok{),}
+                               \FunctionTok{selectInput}\NormalTok{(}\AttributeTok{inputId =} \StringTok{\textquotesingle{}Unit\textquotesingle{}}\NormalTok{,}
+                                           \AttributeTok{label =} \StringTok{\textquotesingle{}Please select your unit, you study\textquotesingle{}}\NormalTok{,}
+                                           \AttributeTok{choices =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Foreign Languages School\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Faculty of Education\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Faculty of Science\&Letters\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Other\textquotesingle{}}\NormalTok{),}
+                                           \AttributeTok{selected =} \ConstantTok{NULL}\NormalTok{),}
+                               \FunctionTok{selectInput}\NormalTok{(}\AttributeTok{inputId =} \StringTok{\textquotesingle{}Grade\textquotesingle{}}\NormalTok{,}
+                                           \AttributeTok{label =} \StringTok{\textquotesingle{}Please select your grade\textquotesingle{}}\NormalTok{,}
+                                           \AttributeTok{choices =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Prep\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}1\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}2\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}3\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}4\textquotesingle{}}\NormalTok{),}
+                                           \AttributeTok{selected =} \ConstantTok{NULL}\NormalTok{),}
+                               \FunctionTok{textInput}\NormalTok{(}\AttributeTok{inputId =} \StringTok{\textquotesingle{}Name\textquotesingle{}}\NormalTok{,}
+                                         \AttributeTok{label =} \StringTok{\textquotesingle{}Please write your name\&surname\textquotesingle{}}\NormalTok{)),}
+            
+            \AttributeTok{demographics\_inputIDs=}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}University\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Unit\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Grade\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Name\textquotesingle{}}\NormalTok{),}
+            \AttributeTok{lastpage=}\ControlFlowTok{function}\NormalTok{(person)\{}
+                \FunctionTok{return}\NormalTok{(}\FunctionTok{strong}\NormalTok{(}\StringTok{\textquotesingle{}Dear \textquotesingle{}}\NormalTok{, person}\SpecialCharTok{$}\NormalTok{demographics}\SpecialCharTok{$}\NormalTok{Name,}\StringTok{\textquotesingle{} Congratulations you have finished the test session.\textquotesingle{}}\NormalTok{,}
+                              \FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\StringTok{"Your Reading Ability Theta is "}\NormalTok{,}\FunctionTok{h2}\NormalTok{(person}\SpecialCharTok{$}\NormalTok{thetas[}\DecValTok{1}\NormalTok{]),}
+                              \FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\StringTok{"Your CEFR Reading Level "}\NormalTok{,}\FunctionTok{h2}\NormalTok{(}\StringTok{"B2"}\NormalTok{),}
+                              \FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\StringTok{"Your Listening Ability Theta is "}\NormalTok{,}\FunctionTok{h2}\NormalTok{(person}\SpecialCharTok{$}\NormalTok{thetas[}\DecValTok{2}\NormalTok{]),}
+                              \FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\StringTok{"Your CEFR Listening Level "}\NormalTok{,}\FunctionTok{h2}\NormalTok{(}\StringTok{"B1"}\NormalTok{),}
+                              \FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\StringTok{"You answered "}\NormalTok{, }\FunctionTok{sum}\NormalTok{(person}\SpecialCharTok{$}\NormalTok{responses[}\DecValTok{1}\SpecialCharTok{:}\NormalTok{ritems],}\AttributeTok{na.rm =}\ConstantTok{TRUE}\NormalTok{),}\StringTok{" of "}\NormalTok{,ritems, }\StringTok{"reading items correctly "}\NormalTok{,}
+                              \FunctionTok{br}\NormalTok{(),}\FunctionTok{br}\NormalTok{(),}\StringTok{"You answered "}\NormalTok{, }\FunctionTok{sum}\NormalTok{(person}\SpecialCharTok{$}\NormalTok{responses[ritems}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{:}\NormalTok{nitems}\SpecialCharTok{{-}}\NormalTok{lnitems}\SpecialCharTok{+}\DecValTok{1}\NormalTok{],}\AttributeTok{na.rm =}\ConstantTok{TRUE}\NormalTok{),}\StringTok{" of "}\NormalTok{,litems, }\StringTok{"listening items correctly "}\NormalTok{))}
+                
+                \CommentTok{\# br(), sum(person$item\_time,na.rm = T)," seconds"))}
+\NormalTok{            \})}
+\CommentTok{\# theme=shinytheme(\textquotesingle{}united\textquotesingle{}))}
+
+\NormalTok{server}\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(person)\{}
+\NormalTok{    storiesDb }\OtherTok{\textless{}{-}} \FunctionTok{dbConnect}\NormalTok{(}\FunctionTok{MariaDB}\NormalTok{(), }\AttributeTok{user=}\StringTok{\textquotesingle{}catepne1\_yalcinyelpaze\textquotesingle{}}\NormalTok{, }\AttributeTok{password=}\StringTok{\textquotesingle{}ketep.638\textquotesingle{}}\NormalTok{, }\AttributeTok{dbname=}\StringTok{\textquotesingle{}catepne1\_CATEP\textquotesingle{}}\NormalTok{, }\AttributeTok{host=}\StringTok{\textquotesingle{}89.252.138.67\textquotesingle{}}\NormalTok{,}\AttributeTok{port=}\StringTok{\textquotesingle{}3306\textquotesingle{}}\NormalTok{)}
+    \CommentTok{\#dbListTables(storiesDb)}
+    \FunctionTok{dbSendQuery}\NormalTok{(storiesDb,}\FunctionTok{paste}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"insert into USERS(UNIVERSTIY, STUDY\_UNIT, GRADE, NAME\_SURNAME) values(\textquotesingle{}\%s\textquotesingle{}, \textquotesingle{}\%s\textquotesingle{}, \textquotesingle{}\%s\textquotesingle{}, \textquotesingle{}\%s\textquotesingle{},\textquotesingle{}\%s\textquotesingle{},\textquotesingle{}\%s\textquotesingle{})"}\NormalTok{,person}\SpecialCharTok{$}\NormalTok{demographics}\SpecialCharTok{$}\NormalTok{University,person}\SpecialCharTok{$}\NormalTok{demographics}\SpecialCharTok{$}\NormalTok{Unit,person}\SpecialCharTok{$}\NormalTok{demographics}\SpecialCharTok{$}\NormalTok{Grade,person}\SpecialCharTok{$}\NormalTok{demographics}\SpecialCharTok{$}\NormalTok{Name,}\FunctionTok{sum}\NormalTok{(person}\SpecialCharTok{$}\NormalTok{responses[}\DecValTok{1}\SpecialCharTok{:}\NormalTok{ritems],}\AttributeTok{na.rm =}\ConstantTok{TRUE}\NormalTok{),}\FunctionTok{sum}\NormalTok{(person}\SpecialCharTok{$}\NormalTok{responses[ritems}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{:}\NormalTok{nitems}\SpecialCharTok{{-}}\NormalTok{lnitems}\SpecialCharTok{+}\DecValTok{1}\NormalTok{],}\AttributeTok{na.rm =}\ConstantTok{TRUE}\NormalTok{))))}
+    \FunctionTok{dbDisconnect}\NormalTok{(storiesDb)}
+\NormalTok{\}}
+
+
+\NormalTok{customNextItem }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(design, person, test)\{}
+    \CommentTok{\#browser()}
+    
+\NormalTok{\}}
+
+
+\NormalTok{customNextItem }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(design, person, test)\{}
+    \CommentTok{\#storiesDb \textless{}{-} dbConnect(MariaDB(), user=\textquotesingle{}catepne1\_yalcinyelpaze\textquotesingle{}, password=\textquotesingle{}ketep.638\textquotesingle{}, dbname=\textquotesingle{}catepne1\_CATEP\textquotesingle{}, host=\textquotesingle{}89.252.138.67\textquotesingle{},port=\textquotesingle{}3306\textquotesingle{})}
+    \CommentTok{\#dbListTables(storiesDb)}
+    \FunctionTok{dbSendQuery}\NormalTok{(storiesDb,}\FunctionTok{paste}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"insert into USERS(UNIVERSTIY, STUDY\_UNIT, GRADE, NAME\_SURNAME, READABILITY, LISTENABILITY,READTRUE,LISTENTRUE) values(\textquotesingle{}\%s\textquotesingle{}, \textquotesingle{}\%s\textquotesingle{}, \textquotesingle{}\%s\textquotesingle{}, \textquotesingle{}\%s\textquotesingle{},\textquotesingle{}\%s\textquotesingle{},\textquotesingle{}\%s\textquotesingle{},\textquotesingle{}\%s\textquotesingle{},\textquotesingle{}\%s\textquotesingle{})"}\NormalTok{,person}\SpecialCharTok{$}\NormalTok{demographics}\SpecialCharTok{$}\NormalTok{University,person}\SpecialCharTok{$}\NormalTok{demographics}\SpecialCharTok{$}\NormalTok{Unit,person}\SpecialCharTok{$}\NormalTok{demographics}\SpecialCharTok{$}\NormalTok{Grade,person}\SpecialCharTok{$}\NormalTok{demographics}\SpecialCharTok{$}\NormalTok{Name,person}\SpecialCharTok{$}\NormalTok{thetas[}\DecValTok{1}\NormalTok{],person}\SpecialCharTok{$}\NormalTok{thetas[}\DecValTok{2}\NormalTok{],}\FunctionTok{sum}\NormalTok{(person}\SpecialCharTok{$}\NormalTok{responses[}\DecValTok{1}\SpecialCharTok{:}\NormalTok{ritems],}\AttributeTok{na.rm =}\ConstantTok{TRUE}\NormalTok{),}\FunctionTok{sum}\NormalTok{(person}\SpecialCharTok{$}\NormalTok{responses[ritems}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{:}\NormalTok{nitems}\SpecialCharTok{{-}}\NormalTok{lnitems}\SpecialCharTok{+}\DecValTok{1}\NormalTok{],}\AttributeTok{na.rm =}\ConstantTok{TRUE}\NormalTok{))))}
+    \CommentTok{\#dbDisconnect(storiesDb)}
+    
+    
+\NormalTok{    block1 }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\NormalTok{ritems}
+\NormalTok{    block2 }\OtherTok{\textless{}{-}}\NormalTok{ (ritems}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{:}\NormalTok{(nitems)}
+\NormalTok{    total\_answered }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(}\FunctionTok{extract.mirtCAT}\NormalTok{(person, }\StringTok{\textquotesingle{}items\_answered\textquotesingle{}}\NormalTok{)))}
+    
+    
+    \ControlFlowTok{if}\NormalTok{(total\_answered }\SpecialCharTok{\textless{}}\NormalTok{ ritems)\{ }\CommentTok{\#first 15 items block1}
+\NormalTok{        block }\OtherTok{\textless{}{-}}\NormalTok{ block1}
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{     block }\OtherTok{\textless{}{-}}\NormalTok{ block2}
+\NormalTok{    ret }\OtherTok{\textless{}{-}} \FunctionTok{findNextItem}\NormalTok{(}\AttributeTok{person=}\NormalTok{person, }\AttributeTok{design=}\NormalTok{design, }\AttributeTok{test=}\NormalTok{test, }
+                        \AttributeTok{subset=}\NormalTok{block, }\AttributeTok{criteria =} \StringTok{\textquotesingle{}Arule\textquotesingle{}}\NormalTok{)}
+\NormalTok{    ret}
+\NormalTok{\}}
+\NormalTok{catep\_MI }\OtherTok{\textless{}{-}} \FunctionTok{mirtCAT}\NormalTok{(df, mod, }\AttributeTok{criteria =} \StringTok{\textquotesingle{}Arule\textquotesingle{}}\NormalTok{, }
+                    \AttributeTok{design =} \FunctionTok{list}\NormalTok{(}\AttributeTok{customNextItem=}\NormalTok{customNextItem, }\AttributeTok{min\_SEM=}\DecValTok{0}\NormalTok{,}
+                                  \AttributeTok{constraints=}\FunctionTok{list}\NormalTok{(}\AttributeTok{not\_scored=}\FunctionTok{c}\NormalTok{(}\DecValTok{24}\NormalTok{,}\DecValTok{23}\NormalTok{),}\AttributeTok{ordered=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{),}\AttributeTok{ordered=}\FunctionTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{9}\NormalTok{), }\AttributeTok{ordered=}\FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{), }\AttributeTok{ordered=}\FunctionTok{c}\NormalTok{(}\DecValTok{13}\SpecialCharTok{:}\DecValTok{15}\NormalTok{), }\AttributeTok{ordered=}\FunctionTok{c}\NormalTok{(}\DecValTok{23}\NormalTok{,}\DecValTok{16}\NormalTok{,}\DecValTok{17}\NormalTok{,}\DecValTok{18}\NormalTok{), }\AttributeTok{ordered=}\FunctionTok{c}\NormalTok{(}\DecValTok{24}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{21}\NormalTok{))),}\AttributeTok{shinyGUI =}\NormalTok{ shiney)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Listening on http://127.0.0.1:6409
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dbDisconnect}\NormalTok{(storiesDb)}
+
+\FunctionTok{plot}\NormalTok{(catep\_MI)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{app_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(catep\_MI)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $final_estimates
+##           Theta_1 Theta_2
+## Estimates       0       0
+## SEs             1       1
+## 
+## $raw_responses
+## character(0)
+## 
+## $items_answered
+## integer(0)
+## 
+## $thetas_history
+##      Theta_1 Theta_2
+## [1,]       0       0
+## 
+## $thetas_SE_history
+##      Theta_1 Theta_2
+## [1,]       1       1
+## 
+## $terminated_sucessfully
+## [1] FALSE
+\end{verbatim}
+
+\end{document}
